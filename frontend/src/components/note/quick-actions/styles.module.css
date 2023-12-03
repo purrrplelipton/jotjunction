@@ -1,0 +1,57 @@
+.a {
+	position: relative;
+}
+
+.a > button[type='button'] {
+	padding: 2px;
+	border-radius: 6px;
+	outline-offset: 2px;
+}
+
+.a > button[type='button'] > * {
+	opacity: 80%;
+}
+
+.a > button[type='button']:is(:focus, :hover) > * {
+	opacity: 100%;
+}
+
+.a > button[type='button'] svg {
+	width: 16px;
+	height: 16px;
+}
+
+.b {
+	position: absolute;
+	inset: 100% auto auto 100%;
+	width: 100%;
+	min-width: 10rem;
+	max-width: 20rem;
+	transform: translate(-100%, 0);
+	background-color: var(--pastel-purple);
+	padding: 8px 0;
+	border-radius: 8px;
+}
+
+.b li button {
+	padding: 2px 8px;
+	outline-offset: 2px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 0.875em;
+}
+
+.b li button span {
+	max-width: 8rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.b li button:has(svg) > svg {
+	width: 1.125em;
+	height: 1.125em;
+	color: #f009;
+}

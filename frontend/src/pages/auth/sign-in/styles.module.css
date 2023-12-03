@@ -1,0 +1,106 @@
+.a {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: stretch;
+	justify-content: end;
+	gap: 20px;
+	height: 100%;
+	padding: 0 0 20px;
+}
+
+.a h1 {
+	margin: 10px 20px;
+	font-size: 36px;
+	font-weight: 300;
+}
+
+.b {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: stretch;
+	gap: 16px;
+	margin: 0 20px;
+}
+
+.b input:not([type='checkbox']) {
+	width: 100%;
+	padding: 10px;
+	border-radius: 8px;
+}
+
+.c {
+	display: flex;
+	align-items: center;
+}
+
+.c input:not([type='checkbox']) {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.c button[type='button'] {
+	padding: 10px;
+	border-radius: 0 8px 8px 0;
+}
+
+.d {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	line-height: 1.25;
+}
+
+.d label {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	border-radius: 4px;
+	padding: 0 4px;
+}
+
+.d label:focus-within {
+	outline: 2px solid;
+}
+
+.d label input {
+	accent-color: currentColor;
+	outline: 0;
+}
+
+.d a {
+	font-weight: 700;
+	text-decoration: underline;
+	border-radius: 4px;
+	padding: 0 4px;
+}
+
+.d a:focus {
+	text-decoration: none;
+}
+
+.b button[type='submit'] {
+	position: relative;
+	padding: 10px;
+	background-color: #fff;
+	border-radius: 8px;
+}
+
+.b button[type='submit'] > i {
+	display: block;
+	height: 24px;
+}
+
+.a p {
+	margin: 10px 0;
+	text-align: center;
+}
+
+.a p a {
+	font-weight: 700;
+	text-decoration: underline;
+	border-radius: 4px;
+}
+
+.a p a:focus {
+	text-decoration: none;
+}

@@ -1,0 +1,43 @@
+.a {
+	position: fixed;
+	inset: 20px 20px auto 20px;
+	display: flex;
+	align-items: center;
+	border-radius: 999px;
+	background-color: #fff8;
+	padding: 8px;
+	box-shadow: 0 4px 8px #0002;
+}
+
+.a > button[type='button'] {
+	border-radius: 999px;
+	padding: 8px;
+}
+
+.a > button[type='button'] svg {
+	width: 20px;
+	height: 20px;
+}
+
+.a h1 {
+	width: 100%;
+	width: calc(100% - (36px * 2));
+	text-align: center;
+	font-weight: 500;
+}
+
+.b {
+	height: 100%;
+	width: 100%;
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 88px 20px 0;
+}
+
+.c img {
+	width: 100%;
+	max-width: 12rem;
+	aspect-ratio: 1 / 1;
+	border-radius: 999px;
+	margin: 0 auto;
+}

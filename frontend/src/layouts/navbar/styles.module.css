@@ -1,0 +1,48 @@
+.a {
+	position: fixed;
+	z-index: 99;
+	inset: 100% 0 auto 0;
+	transform: translateY(-100%);
+	background-color: #fff5;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	padding: 14px 0;
+}
+
+.a > * {
+	display: grid;
+	place-items: center;
+	width: 36px;
+	aspect-ratio: 1 / 1;
+	padding: 8px;
+	border-radius: 999px;
+	position: relative;
+	overflow: hidden;
+	outline-offset: 2px;
+}
+
+.a > * > svg {
+	width: 20px;
+	height: 20px;
+}
+
+.x {
+	background-color: #fff6;
+	box-shadow: 0 2px 6px #0002;
+}
+
+.x > svg path:not(:first-child) {
+	fill: currentColor;
+}
+
+.a > * > img {
+	--spacing: 1px;
+	position: absolute;
+	inset: var(--spacing);
+	width: calc(100% - (var(--spacing) * 2));
+	height: calc(100% - (var(--spacing) * 2));
+	object-fit: cover;
+	object-position: center;
+	border-radius: 999px;
+}

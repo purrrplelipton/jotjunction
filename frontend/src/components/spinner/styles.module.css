@@ -1,0 +1,27 @@
+.a {
+	position: absolute;
+	inset: 0;
+	display: grid;
+	place-items: center;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(1turn);
+	}
+}
+
+.a > div > svg {
+	width: 20px;
+	height: 20px;
+	margin: 0 auto;
+	animation: spin 1.375s linear infinite;
+}
+
+.b {
+	display: contents;
+	text-align: center;
+}

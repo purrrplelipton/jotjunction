@@ -1,0 +1,66 @@
+.a {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: stretch;
+	justify-content: end;
+	gap: 20px;
+	height: 100%;
+	padding: 0 0 20px;
+}
+
+.b {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: stretch;
+	gap: 16px;
+	margin: 0 20px;
+}
+
+.b > div {
+	display: flex;
+	align-items: center;
+}
+
+.b input {
+	width: 100%;
+	padding: 10px;
+	border-radius: 8px;
+}
+
+.b div input {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.b div button[type='button'] {
+	padding: 10px;
+	border-radius: 0 8px 8px 0;
+}
+
+.b button[type='submit'] {
+	position: relative;
+	padding: 10px;
+	border-radius: 8px;
+}
+
+.b button[type='submit'] i {
+	display: block;
+	height: 24px;
+}
+
+.a h1 {
+	font-size: 36px;
+	font-weight: 300;
+	margin: 10px 20px;
+}
+
+.d {
+	margin: 10px 0;
+	text-align: center;
+}
+
+.d a {
+	font-weight: 700;
+	text-decoration: underline;
+	border-radius: 4px;
+}

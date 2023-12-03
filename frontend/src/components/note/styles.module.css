@@ -1,0 +1,132 @@
+.a {
+	width: 100%;
+	position: relative;
+}
+
+.a:not(:last-child) {
+	margin: 0 0 8px;
+}
+
+.b {
+	display: block;
+	border: 2px solid #fff9;
+	outline-offset: 2px;
+	border-radius: 8px;
+	font-size: 0.625em;
+}
+
+.b > div {
+	background-color: #fff9;
+	margin: 2px;
+	padding: 4px;
+	border-radius: 6px;
+}
+
+.b > div h2 {
+	font-size: 2em;
+	line-height: 1.25;
+	width: 100%;
+	max-width: calc(100% - 20px);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.b > div h2 span {
+	position: relative;
+	display: inline-block;
+}
+
+.b > div h2[data-no-title='true'] span {
+	max-width: calc(100% - (1em * 2));
+	transform: translateX(1em);
+	opacity: 40%;
+	font-weight: 300;
+}
+
+.b > div h2[data-no-title='true'] span::before,
+.b > div h2[data-no-title='true'] span::after {
+	content: '\002A';
+	width: 1em;
+	font-weight: 500;
+	position: absolute;
+	inset: 0 auto auto 0;
+	transform: translateX(-100%);
+	text-align: center;
+}
+
+.b > div h2[data-no-title='true'] span::after {
+	left: 100%;
+	transform: translateX(0);
+}
+
+.b > div h2 + div {
+	position: relative;
+	margin: 3px 0 0;
+}
+
+.b > div h2 + div::before {
+	content: '';
+	position: absolute;
+	inset: 0 0 auto 0;
+	transform: translateY(-100%);
+	border-top: 1px solid #fff;
+}
+
+.b > div h2 + div p {
+	font-size: 1.4em;
+	line-height: 1.375;
+	max-height: calc(3 * (1em * 1.375));
+	overflow: hidden;
+	position: relative;
+}
+
+.b > div h2 + div p::after {
+	content: '';
+	position: absolute;
+	height: calc(1em * 1.375);
+	inset: 100% 0 auto 0;
+	transform: translateY(-100%);
+	background-image: linear-gradient();
+}
+
+.b > div h2 + div p + div {
+	margin: 3px 0 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 4px;
+}
+
+.b > div h2 + div p + div > svg {
+	color: gold;
+	width: 1rem;
+	height: 1rem;
+	margin: 1px;
+	opacity: 77%;
+}
+
+.b > div h2 + div p + div > svg[data-starred='true'] path:not(:first-child) {
+	opacity: 99%;
+	fill: currentColor;
+}
+
+.b > div h2 + div p + div > svg + div {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+	font-size: 1.2em;
+	line-height: 1.125;
+}
+
+.b > div h2 + div p + div > svg + div svg {
+	width: 1rem;
+	height: 1rem;
+}
+
+.a > div {
+	pointer-events: auto;
+	position: absolute;
+	inset: 4px auto auto 100%;
+	transform: translateX(calc(-100% - 4px));
+}

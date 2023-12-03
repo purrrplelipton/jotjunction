@@ -1,0 +1,136 @@
+.a {
+	height: 100%;
+	padding: 96px 0 0;
+}
+
+.b {
+	position: fixed;
+	inset: 20px 20px auto 20px;
+	margin: 0 auto;
+	max-width: 1440px;
+	border-radius: 999px;
+	padding: 8px;
+	display: flex;
+	align-items: center;
+	background-color: #fff7;
+}
+
+.b > button {
+	flex-shrink: 0;
+	padding: 8px;
+	border-radius: 999px;
+	outline-offset: 2px;
+}
+
+.b > button svg {
+	width: 20px;
+	height: 20px;
+}
+
+.b h1 {
+	width: 100%;
+	max-width: 24ch;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.a form {
+	height: 100%;
+	padding: 0 20px;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: stretch;
+	justify-content: start;
+}
+
+.a form > div:first-child {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+}
+
+.a form > div:first-child > input {
+	width: 100%;
+	padding: 10px 10px 10px 12px;
+	border-radius: 999px 4px 4px 999px;
+	background-color: #fff3;
+	outline: 2px solid #0000;
+	outline-offset: -2px;
+}
+
+.a form > div:first-child > input:focus {
+	outline-color: #ffff;
+}
+
+.a form > div:first-child > label {
+	flex-shrink: 0;
+	position: relative;
+	background-color: #fff3;
+	padding: 12px 14px 12px 10px;
+	border-radius: 4px 999px 999px 4px;
+	outline: 2px solid #0000;
+	outline-offset: -2px;
+}
+
+.a form > div:first-child > label:focus-within {
+	outline-color: #ffff;
+}
+
+.a form > div:first-child > label input[type='checkbox'] {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	opacity: 0;
+}
+
+.a form > div:first-child > label svg {
+	width: 20px;
+	height: 20px;
+}
+
+.a form > div:first-child > label svg[data-starred='true'] path:not(:first-child) {
+	fill: currentColor;
+}
+
+.a form > textarea {
+	min-height: 160px;
+	border-radius: 20px;
+	background-color: #fff3;
+	outline: 2px solid #0000;
+	outline-offset: -2px;
+	padding: 10px;
+	margin: 16px 0;
+}
+
+.a form > textarea:focus {
+	outline-color: #ffff;
+}
+
+.a form > div:last-child {
+	position: sticky;
+	z-index: 99;
+	bottom: 20px;
+	left: 0;
+	width: 100%;
+}
+
+.a form button[type='submit'] {
+	position: relative;
+	display: block;
+	width: 100%;
+	padding: 10px;
+	background-color: #fff3;
+	outline: 2px solid #0000;
+	border-radius: 999px;
+	outline-offset: 1px;
+}
+
+.a form button[type='submit']:focus {
+	outline-color: #ffff;
+}
+
+.a form button[type='submit'] i {
+	display: block;
+	height: 24px;
+}

@@ -1,0 +1,45 @@
+.separator {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 20px;
+}
+
+.separator i {
+	width: 100%;
+	height: 1px;
+	background-color: currentColor;
+}
+
+.separator span {
+	font-size: 0.875rem;
+	margin: 0 0.5em;
+}
+
+.social-buttons {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	padding: 4px;
+	margin: 12px 0 8px;
+}
+
+.social-buttons button {
+	padding: 6px;
+	border-radius: 8px;
+}
+
+.social-buttons button:not(:first-child, :last-child) {
+	margin: 0 4px;
+}
+
+.social-buttons button:focus svg {
+	color: #fff;
+}
+
+.social-buttons svg {
+	width: unset;
+	height: unset;
+	width: 20px;
+}

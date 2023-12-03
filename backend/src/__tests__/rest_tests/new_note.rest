@@ -1,0 +1,9 @@
+POST http://localhost:3000/api/notes/
+Content-Type: application/json
+
+{
+    "title": "things to remember",
+    "content": "i have a sister\n i have a beauty parlour",
+    "important": true,
+    "userId": "64070c45c1eb6bac559ddbf4"
+}
