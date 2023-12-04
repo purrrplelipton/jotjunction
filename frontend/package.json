@@ -10,7 +10,6 @@
 	"dependencies": {
 		"@notelist/backend": "*",
 		"@reduxjs/toolkit": "^1.9.7",
-		"@tabler/icons-react": "^2.39.0",
 		"axios": "^1.5.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
@@ -21,9 +20,11 @@
 		"uuid": "^9.0.1"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.23.5",
 		"@babel/preset-env": "^7.23.5",
 		"@babel/preset-react": "^7.23.3",
 		"@svgr/rollup": "^8.1.0",
+		"@testing-library/dom": "^9.3.3",
 		"@testing-library/jest-dom": "^6.1.5",
 		"@testing-library/react": "^14.1.2",
 		"@testing-library/user-event": "^14.5.1",

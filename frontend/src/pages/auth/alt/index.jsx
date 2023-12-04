@@ -1,23 +1,23 @@
-import styles from './styles.module.css';
-import { IconBrandApple, IconBrandFacebook, IconBrandGoogle } from '@tabler/icons-react';
+import { IconBrandApple, IconBrandFacebook, IconBrandGoogle } from '@src/assets';
 import React from 'react';
+import styles from './styles.module.css';
 
 function Alt() {
 	return (
 		<>
-			<div className={styles.separator}>
+			<div className={styles.a}>
 				<i />
 				<span>or</span>
 				<i />
 			</div>
-			<div className={styles.socialButtons}>
-				<button type="button" aria-label="Sign in with facebook">
+			<div className={styles.b}>
+				<button type="button" aria-label="sign in with facebook">
 					<IconBrandFacebook />
 				</button>
-				<button type="button" aria-label="Sign in with google">
+				<button type="button" aria-label="sign in with google">
 					<IconBrandGoogle />
 				</button>
-				<button type="button" aria-label="Sign in with apple ID">
+				<button type="button" aria-label="sign in with apple ID">
 					<IconBrandApple />
 				</button>
 			</div>

@@ -1,0 +1,68 @@
+.a {
+	position: absolute;
+	z-index: 99;
+	inset: 0 0 0 auto;
+	width: 100%;
+	max-width: 20rem;
+	backdrop-filter: blur(6px);
+	pointer-events: auto;
+}
+
+.a::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background-color: var(--pastel-purple);
+	opacity: 77%;
+}
+
+.a > div {
+	position: relative;
+	height: 100%;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px;
+}
+
+.c {
+	width: 100%;
+}
+
+.c header {
+	padding: 8px;
+	border-radius: 999px;
+	display: flex;
+	align-items: center;
+	background-color: #fff8;
+	box-shadow: 0 4px 8px #0002;
+}
+
+.c header button {
+	padding: 8px;
+	border-radius: 999px;
+	margin: 0 0 0 auto;
+}
+
+.c header button svg {
+	width: 20px;
+}
+
+.b {
+	width: 100%;
+	padding: 10px;
+	border-radius: 999px;
+	background-color: var(--pastel-green);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	line-height: 1.25;
+}
+
+.b > svg {
+	width: 20px;
+	color: #f00c;
+}

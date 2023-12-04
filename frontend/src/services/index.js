@@ -16,6 +16,17 @@ export function removeToken() {
 
 const usersApi = axios.create({ baseURL: '/api/users' });
 
+export async function getDetails() {
+	try {
+		const { data } = await usersApi.get('/', {
+			headers: { Authorization: `Bearer ${getToken()}` },
+		});
+		return { data };
+	} catch (error) {
+		throw error;
+	}
+}
+
 export async function signIn(credentials) {
 	try {
 		const {

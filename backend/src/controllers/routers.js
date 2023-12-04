@@ -8,6 +8,13 @@ import { userExtractor } from '../utils/middleware.js';
 const [userRouter, noteRouter] = await Promise.all([Router(), Router()]);
 const { sign } = pkg;
 
+userRouter.get('/', userExtractor, async (req, res) => {
+	const user = await User.findById(req.user);
+	if (user) {
+		return res.json(user);
+	}
+});
+
 userRouter.post('/register', async (req, res) => {
 	const { username, password } = req.body;
 

@@ -14,7 +14,7 @@ function QuickActionsContainer({ noteID }) {
 	React.useEffect(() => {
 		if (actionsVisibilityShown) document.body.classList.add('xoxo');
 		return () => document.body.classList.remove('xoxo');
-	});
+	}, [actionsVisibilityShown]);
 
 	React.useEffect(() => {
 		const handleOutsideClick = (e) => {

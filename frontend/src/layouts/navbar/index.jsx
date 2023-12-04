@@ -12,8 +12,8 @@ function NavBar() {
 		{ child: <IconTags />, fn: () => {}, label: 'go to my tags page' },
 		{
 			child: <img src={rhyan} alt="" />,
-			fn: () => navigate('my-account'),
-			label: 'got to my account page',
+			fn: () => navigate('account-overview'),
+			label: 'got to my account overview page',
 		},
 	];
 
