@@ -2,6 +2,7 @@ import { default as rhyan } from './rhyan.webp';
 import { ReactComponent as IconBrandApple } from './svgs/brand-apple.svg';
 import { ReactComponent as IconBrandFacebook } from './svgs/brand-facebook.svg';
 import { ReactComponent as IconBrandGoogle } from './svgs/brand-google.svg';
+import { ReactComponent as IconCamera } from './svgs/camera.svg';
 import { ReactComponent as IconChevronLeft } from './svgs/chevron-left.svg';
 import { ReactComponent as IconClock } from './svgs/clock.svg';
 import { ReactComponent as IconDotsVertical } from './svgs/dots-vertical.svg';
@@ -17,11 +18,13 @@ import { ReactComponent as IconSpinner } from './svgs/spinner.svg';
 import { ReactComponent as IconStar } from './svgs/star.svg';
 import { ReactComponent as IconTags } from './svgs/tags.svg';
 import { ReactComponent as IconTrash } from './svgs/trash.svg';
+import { ReactComponent as IconUser } from './svgs/user.svg';
 import { ReactComponent as IconX } from './svgs/x.svg';
 
 export {
 	IconBrandApple,
 	IconBrandFacebook,
+	IconCamera,
 	IconBrandGoogle,
 	IconChevronLeft,
 	IconClock,
@@ -38,6 +41,7 @@ export {
 	IconStar,
 	IconTags,
 	IconTrash,
+	IconUser,
 	IconX,
 	rhyan,
 };

@@ -25,13 +25,54 @@
 	width: 100%;
 	max-width: 1280px;
 	margin: 0 auto;
-	padding: 88px 20px 0;
+	padding: 88px 20px 20px;
 }
 
-.c img {
+.c {
+	height: 100%;
+}
+
+.c > div {
+	position: relative;
 	width: 100%;
 	max-width: 12rem;
 	aspect-ratio: 1 / 1;
 	border-radius: 999px;
-	margin: 0 auto;
+	overflow: hidden;
+	margin: 0 auto 20px;
+	outline: 3px dashed #fff;
+	outline-offset: 2px;
+}
+
+.c > div .null {
+	width: 50%;
+	position: absolute;
+	inset: 50% auto auto 50%;
+	transform: translate(-50%, -50%);
+}
+
+label[for='photo'],
+label[for='photo'] input,
+label[for='photo'] div {
+	position: absolute;
+}
+
+label[for='photo'] {
+	inset: 0;
+}
+
+label[for='photo'] input {
+	z-index: -1;
+	opacity: 0;
+}
+
+label[for='photo'] div {
+	width: 40px;
+	inset: 100% auto auto 100%;
+	transform: translate(-162.5%, -162.5%);
+	background-color: var(--pastel-purple);
+	border-radius: 999px;
+	padding: 8px;
+	outline: 2px dashed #fff;
+	outline-offset: 2px;
 }

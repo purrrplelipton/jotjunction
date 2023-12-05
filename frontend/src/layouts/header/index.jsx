@@ -21,8 +21,8 @@ function Header(props) {
 	};
 
 	return (
-		<header className={styles.header}>
-			<label className={styles.searchBox}>
+		<header className={styles.a}>
+			<label className={styles.b}>
 				<IconSearch />
 				<input
 					id="searchField"

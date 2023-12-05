@@ -1,4 +1,4 @@
-.header {
+.a {
 	position: fixed;
 	z-index: 99;
 	inset: 20px 20px auto 20px;
@@ -7,37 +7,45 @@
 	background-color: #fff5;
 	border-radius: 999px;
 	max-width: 1440px;
-	outline-width: 2px;
-	outline-style: solid;
-	outline-color: #0000;
-	outline-offset: -4px;
+	outline-offset: 2px;
+	backdrop-filter: blur(6px);
+	overflow: hidden;
 }
 
-.header:focus-within {
-	outline-color: #ffff;
+.a::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background-color: var(--pastel-purple);
+	opacity: 33%;
 }
 
-.search-box {
+.a:focus-within {
+	outline: 2px solid #fff;
+}
+
+.b {
 	display: flex;
 	align-items: center;
 	border-radius: 999px;
 	background-color: #0000;
 }
 
-.search-box svg {
+.b svg {
 	flex-shrink: 0;
 	width: 20px;
 	height: 20px;
 	margin: 8px;
 }
 
-.search-box input {
+.b input {
 	background-color: #0000;
 	width: 100%;
 	outline: 0;
 }
 
-.search-box button {
+.b button {
 	flex-shrink: 0;
 	padding: 8px;
 	border-radius: 999px;
@@ -47,10 +55,10 @@
 	outline-offset: -1px;
 }
 
-.search-box button:focus {
+.b button:focus {
 	outline-color: #ffff;
 }
 
-.search-box button svg {
+.b button svg {
 	margin: 0;
 }

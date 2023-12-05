@@ -12,19 +12,17 @@
 	border: 2px solid #fff9;
 	outline-offset: 2px;
 	border-radius: 8px;
-	font-size: 0.625em;
 }
 
 .b > div {
-	background-color: #fff9;
+	background-color: #fff6;
 	margin: 2px;
 	padding: 4px;
-	border-radius: 6px;
+	border-radius: 5px;
 }
 
 .b > div h2 {
-	font-size: 2em;
-	line-height: 1.25;
+	font-weight: 500;
 	width: 100%;
 	max-width: calc(100% - 20px);
 	overflow: hidden;
@@ -74,7 +72,7 @@
 }
 
 .b > div h2 + div p {
-	font-size: 1.4em;
+	font-size: 0.875em;
 	line-height: 1.375;
 	max-height: calc(3 * (1em * 1.375));
 	overflow: hidden;
@@ -115,7 +113,7 @@
 	display: flex;
 	align-items: center;
 	gap: 2px;
-	font-size: 1.2em;
+	font-size: 0.75rem;
 	line-height: 1.125;
 }
 
