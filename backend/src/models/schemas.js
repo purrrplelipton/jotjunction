@@ -30,6 +30,7 @@ const Note = mongoose.model('Note', noteSchema);
 const userSchema = mongoose.Schema(
 	{
 		username: { type: String, required: true },
+		photo: { type: String },
 		password: String,
 		notes: [
 			{

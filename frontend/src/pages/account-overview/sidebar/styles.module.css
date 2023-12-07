@@ -6,6 +6,7 @@
 	max-width: 20rem;
 	backdrop-filter: blur(6px);
 	pointer-events: auto;
+	box-shadow: -4px 0 8px #0002;
 }
 
 .a::before {

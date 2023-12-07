@@ -1,12 +1,41 @@
 import { compare, hash } from 'bcrypt';
 import { Router } from 'express';
+import fs from 'fs';
 import pkg from 'jsonwebtoken';
+import multer, { diskStorage } from 'multer';
+import { v4 as uuidv4 } from 'uuid';
 import { Note, User } from '../models/schemas.js';
 import { HASH_COMPLEXITY, SECRET } from '../utils/config.js';
 import { userExtractor } from '../utils/middleware.js';
 
 const [userRouter, noteRouter] = await Promise.all([Router(), Router()]);
 const { sign } = pkg;
+
+const config = multer({
+	storage: diskStorage({
+		filename: (_, file, cb) => {
+			const fn = file.originalname;
+			const ext = fn.slice(fn.lastIndexOf('.'));
+			cb(null, `${uuidv4()}${ext}`);
+		},
+		destination: (req, __, cb) => {
+			const uploadDir = `photos/${req.user}`;
+			if (!fs.existsSync(uploadDir)) {
+				fs.mkdirSync(uploadDir, { recursive: true });
+			}
+			cb(null, uploadDir);
+		},
+	}),
+	fileFilter: function (_, file, cb) {
+		if (!file.mimetype.match(/image\/.*/)) {
+			return cb(new Error('Only images are allowed'));
+		}
+		cb(null, true);
+	},
+	limits: {
+		fileSize: 1024 * 1024 * 2, // 5 MB
+	},
+});
 
 userRouter.get('/', userExtractor, async (req, res) => {
 	const user = await User.findById(req.user);
@@ -25,6 +54,18 @@ userRouter.post('/register', async (req, res) => {
 
 	const savedUser = await user.save();
 	res.status(201).json(savedUser);
+});
+
+userRouter.patch('/photo', userExtractor, config.single('photo'), async (req, res) => {
+	const user = await User.findById(req.user);
+
+	if (user) {
+		if (req.file) {
+			user.photo = req.file.path;
+			await user.save();
+			return res.json(user);
+		}
+	}
 });
 
 userRouter.post('/sign-in', async (req, res) => {

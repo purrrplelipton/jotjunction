@@ -3,6 +3,7 @@ import { Spinner } from '@src/components';
 import { getDetails } from '@src/services';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Modal from './modal';
 import Sidebar from './sidebar';
 import styles from './styles.module.css';
 
@@ -11,6 +12,7 @@ function AccountOverview() {
 	const [sidebarShown, setSidebarShown] = React.useState(false);
 	const [userDetails, setUserDetails] = React.useState(null);
 	const [fetchingDetails, setFetchingDetails] = React.useState(false);
+	const [uploadOptionVisible, setUploadOptionVisible] = React.useState(false);
 
 	React.useEffect(() => {
 		async function fetchDetails() {
@@ -28,6 +30,27 @@ function AccountOverview() {
 		fetchDetails();
 	}, []);
 
+	const actionsContainerRef = React.useRef(null);
+
+	React.useEffect(() => {
+		if (uploadOptionVisible) document.body.classList.add('xoxo');
+		return () => document.body.classList.remove('xoxo');
+	}, [uploadOptionVisible]);
+
+	React.useEffect(() => {
+		const handleOutsideClick = (e) => {
+			if (actionsContainerRef.current && !actionsContainerRef.current.contains(e.target)) {
+				setUploadOptionVisible(false);
+			}
+		};
+
+		document.addEventListener('mousedown', handleOutsideClick);
+
+		return () => {
+			document.removeEventListener('mousedown', handleOutsideClick);
+		};
+	}, []);
+
 	return (
 		<>
 			<header className={styles.a}>
@@ -43,19 +66,27 @@ function AccountOverview() {
 				<div className={styles.c}>
 					<div>
 						{fetchingDetails && !userDetails && <Spinner />}
-						{!fetchingDetails && userDetails && <img src={rhyan} alt="" loading="lazy" />}
-						{!fetchingDetails && userDetails && (
-							<label htmlFor="photo">
-								<input type="file" id="photo" />
-								<div>
-									<IconCamera />
-								</div>
-							</label>
+						{!fetchingDetails && userDetails && userDetails.photo && (
+							<img src={userDetails.photo} alt="" />
 						)}
-						{!fetchingDetails && !userDetails && <IconUser className={styles.null} />}
+						{!fetchingDetails && userDetails && (
+							<button
+								type="button"
+								onClick={() => setUploadOptionVisible(true)}
+								aria-label="set or change profile photo"
+							>
+								<IconCamera />
+							</button>
+						)}
+						{!fetchingDetails && (!userDetails || !userDetails.photo) && (
+							<IconUser className={styles.null} />
+						)}
 					</div>
 					<h2>rhyan@apple.id.com</h2>
 				</div>
+				{uploadOptionVisible && (
+					<Modal hideModal={() => setUploadOptionVisible(false)} ref={actionsContainerRef} />
+				)}
 				{sidebarShown && <Sidebar sidebarShown={sidebarShown} setSidebarShown={setSidebarShown} />}
 			</main>
 		</>

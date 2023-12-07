@@ -16,6 +16,17 @@ export function removeToken() {
 
 const usersApi = axios.create({ baseURL: '/api/users' });
 
+export async function updatePhoto(payload) {
+	try {
+		const { data } = await usersApi.patch('/photo', payload, {
+			headers: { Authorization: `Bearer ${getToken()}` },
+		});
+		return { data };
+	} catch (error) {
+		throw error;
+	}
+}
+
 export async function getDetails() {
 	try {
 		const { data } = await usersApi.get('/', {
@@ -27,11 +38,11 @@ export async function getDetails() {
 	}
 }
 
-export async function signIn(credentials) {
+export async function signIn(payload) {
 	try {
 		const {
 			data: { id, token },
-		} = await usersApi.post('/sign-in', credentials);
+		} = await usersApi.post('/sign-in', payload);
 		setToken(token);
 		return { id };
 	} catch (error) {
@@ -39,9 +50,9 @@ export async function signIn(credentials) {
 	}
 }
 
-export async function doOnboarding(credentials) {
+export async function doOnboarding(payload) {
 	try {
-		const { data } = await usersApi.post('/register', credentials);
+		const { data } = await usersApi.post('/register', payload);
 		return { data };
 	} catch (error) {
 		throw error;
@@ -62,27 +73,27 @@ export async function fetchNotes() {
 	}
 }
 
-export async function findNote(query) {
+export async function findNote(payload) {
 	try {
-		const { data } = await notesApi.get('/', { params: { query } });
+		const { data } = await notesApi.get('/', { params: { payload } });
 		return { data };
 	} catch (error) {
 		throw error;
 	}
 }
 
-export async function addNote(note) {
+export async function addNote(payload) {
 	try {
-		const { data } = await notesApi.post('/', note);
+		const { data } = await notesApi.post('/', payload);
 		return { data };
 	} catch (error) {
 		throw error;
 	}
 }
 
-export async function deleteNote(id) {
+export async function deleteNote(payload) {
 	try {
-		const response = await notesApi.delete(`/${id}`);
+		const response = await notesApi.delete(`/${payload}`);
 		return response;
 	} catch (error) {
 		throw error;

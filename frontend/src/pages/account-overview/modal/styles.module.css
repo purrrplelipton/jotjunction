@@ -1,0 +1,36 @@
+.a {
+	inset: 0;
+	display: grid;
+	margin: 0 auto;
+	position: fixed;
+	place-items: center;
+	backdrop-filter: blur(6px);
+}
+
+.a div {
+	width: 100%;
+	max-width: 20rem;
+	padding: 12px 0;
+	border-radius: 12px;
+	pointer-events: auto;
+	box-shadow: 0 4px 12px #0002;
+	background-color: var(--pastel-green);
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: stretch;
+}
+
+[for='photo']:focus-within {
+	outline: 2px solid;
+}
+
+.a div > * {
+	padding: 10px;
+	text-align: center;
+	outline-offset: 2px;
+	border-bottom: 1px solid #0006;
+}
+
+.a div > *:last-child {
+	border-bottom: 0;
+}

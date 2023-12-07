@@ -1,9 +1,8 @@
-import { IconSignOut } from '@src/assets';
+import { IconSidebarRightCollapse, IconSignOut } from '@src/assets';
 import { removeToken } from '@src/services';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.css';
-import { IconSidebarRightCollapse } from '@src/assets';
 
 function Sidebar({ sidebarShown, setSidebarShown }) {
 	const navigate = useNavigate();
@@ -50,7 +49,7 @@ function Sidebar({ sidebarShown, setSidebarShown }) {
 					type="button"
 					onClick={() => {
 						removeToken();
-						navigate('sign-in');
+						navigate('/sign-in');
 					}}
 				>
 					<IconSignOut />

@@ -12,7 +12,7 @@
 		"dev": "concurrently --kill-others-on-fail \"yarn backend:dev\" \"yarn frontend:dev\"",
 		"backend:test": "yarn workspace @notelist/backend test",
 		"frontend:test": "yarn workspace @notelist/frontend test",
-		"prestart": "yarn workspace @notelist/frontend build && mv frontend/dist backend",
+		"prestart": "rm -rf backend/dist && yarn workspace @notelist/frontend build && mv frontend/dist backend",
 		"start": "yarn workspace @notelist/backend start"
 	},
 	"devDependencies": {

@@ -77,13 +77,6 @@
 	outline-color: #ffff;
 }
 
-.a form > div:first-child > label input[type='checkbox'] {
-	position: absolute;
-	inset: 0;
-	z-index: -1;
-	opacity: 0;
-}
-
 .a form > div:first-child > label svg {
 	width: 20px;
 	height: 20px;

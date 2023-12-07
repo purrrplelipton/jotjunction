@@ -65,6 +65,7 @@ function NewNote() {
 								checked={starred}
 								id="starred"
 								onChange={(e) => setStarred(e.target.checked)}
+								className="sr-only"
 							/>
 							<IconStar data-starred={starred} />
 						</label>
