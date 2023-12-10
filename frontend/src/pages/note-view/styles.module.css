@@ -1,0 +1,17 @@
+.a {
+	position: fixed;
+	inset: 20px 20px auto 20px;
+	border-radius: 999px;
+	padding: 8px;
+	background-color: #fff3;
+}
+
+.a button {
+	width: 36px;
+	padding: 8px;
+	border-radius: 999px;
+	outline-offset: 2px;
+}
+
+.b {
+}

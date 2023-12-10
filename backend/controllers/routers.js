@@ -18,8 +18,8 @@ const config = multer({
 			const ext = fn.slice(fn.lastIndexOf('.'));
 			cb(null, `${uuidv4()}${ext}`);
 		},
-		destination: (req, __, cb) => {
-			const uploadDir = `photos/${req.user}`;
+		destination: (req, _, cb) => {
+			const uploadDir = `profile-photos/${req.user}`;
 			if (!fs.existsSync(uploadDir)) {
 				fs.mkdirSync(uploadDir, { recursive: true });
 			}
@@ -33,7 +33,7 @@ const config = multer({
 		cb(null, true);
 	},
 	limits: {
-		fileSize: 1024 * 1024 * 2, // 5 MB
+		fileSize: 1024 * 1024 * 2, // 2MB
 	},
 });
 
@@ -56,16 +56,13 @@ userRouter.post('/register', async (req, res) => {
 	res.status(201).json(savedUser);
 });
 
-userRouter.patch('/photo', userExtractor, config.single('photo'), async (req, res) => {
-	const user = await User.findById(req.user);
-
-	if (user) {
-		if (req.file) {
-			user.photo = req.file.path;
-			await user.save();
-			return res.json(user);
-		}
-	}
+userRouter.patch('/', userExtractor, config.single('photo'), async (req, res) => {
+	const updatedUser = await User.findByIdAndUpdate(
+		req.user,
+		{ ...req.body, photo: req.file.filename },
+		{ new: true, runValidators: true, context: 'query' },
+	);
+	if (updatedUser) res.json(updatedUser);
 });
 
 userRouter.post('/sign-in', async (req, res) => {
@@ -78,9 +75,9 @@ userRouter.post('/sign-in', async (req, res) => {
 		return res.status(401).json({ error: 'invalid username or password' });
 	}
 
-	const token = sign({ id: user._id }, SECRET, { expiresIn: remember ? '30d' : '1d' });
+	const token = sign(user._id, SECRET, { expiresIn: remember ? '30d' : '1d' });
 
-	res.status(200).send({ id: user._id, token });
+	res.status(200).send({ token });
 });
 
 noteRouter.get('/', userExtractor, async (req, res) => {
@@ -91,9 +88,13 @@ noteRouter.get('/', userExtractor, async (req, res) => {
 	}
 });
 
-noteRouter.get('/:id', async (req, res) => {
-	const note = await Note.findById(req.params.id);
-	res.json(note);
+noteRouter.get('/:id', userExtractor, async (req, res) => {
+	const user = await User.findById(req.user);
+	if (user) {
+		const notes = await Note.find({ author: user._id });
+		const note = notes.find((nt) => String(nt._id) === req.params.id);
+		res.json(note);
+	}
 });
 
 /*  */
@@ -122,6 +123,8 @@ noteRouter.delete('/:id', userExtractor, async (req, res) => {
 	const user = await User.findById(req.user);
 	if (user) {
 		await Note.findByIdAndDelete(req.params.id);
+		user.notes = await user.notes.filter((noteID) => noteID !== req.params.id);
+		await user.save();
 		res.status(204).end();
 	}
 });

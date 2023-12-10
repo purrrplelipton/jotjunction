@@ -8,7 +8,7 @@ import { IconStar } from '@src/assets';
 function Note({ details }) {
 	return (
 		<div className={styles.a}>
-			<Link className={styles.b} to={`/note/${details._id}`}>
+			<Link className={styles.b} to={`/${details._id}`}>
 				<div>
 					<div>
 						<h2 data-no-title={!Boolean(details.title)}>

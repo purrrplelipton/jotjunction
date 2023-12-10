@@ -1,4 +1,4 @@
-import { updatePhoto } from '@src/services';
+import { updateDetails } from '@src/services';
 import React from 'react';
 import styles from './styles.module.css';
 
@@ -9,8 +9,7 @@ function Modal({ hideModal }, ref) {
 			const formData = new FormData();
 			formData.append('photo', photo);
 			try {
-				const { data } = await updatePhoto(formData);
-				console.log(data);
+				await updateDetails(formData);
 				hideModal();
 			} catch (error) {
 				console.log(error.message);

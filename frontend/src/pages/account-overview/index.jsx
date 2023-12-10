@@ -1,29 +1,31 @@
-import { IconCamera, IconChevronLeft, IconSidebarRightExpand, IconUser, rhyan } from '@src/assets';
+import { IconCamera, IconChevronLeft, IconSidebarRightExpand, IconUser } from '@src/assets';
 import { Spinner } from '@src/components';
 import { getDetails } from '@src/services';
+import { setUser } from '@src/store/reducers';
 import React from 'react';
+import { connect, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Modal from './modal';
 import Sidebar from './sidebar';
 import styles from './styles.module.css';
 
-function AccountOverview() {
+function AccountOverview({ user }) {
 	const navigate = useNavigate();
-	const [sidebarShown, setSidebarShown] = React.useState(false);
-	const [userDetails, setUserDetails] = React.useState(null);
-	const [fetchingDetails, setFetchingDetails] = React.useState(false);
-	const [uploadOptionVisible, setUploadOptionVisible] = React.useState(false);
+	const dispatch = useDispatch();
+	const [loading, setLoading] = React.useState(false);
+	const [showSidebar, setShowSidebar] = React.useState(false);
+	const [showOptions, setShowOptions] = React.useState(false);
 
 	React.useEffect(() => {
 		async function fetchDetails() {
 			try {
-				setFetchingDetails(true);
+				setLoading(true);
 				const { data } = await getDetails();
-				setUserDetails(data);
+				dispatch(setUser(data));
 			} catch (error) {
 				console.log(error.message);
 			} finally {
-				setFetchingDetails(false);
+				setLoading(false);
 			}
 		}
 
@@ -33,14 +35,14 @@ function AccountOverview() {
 	const actionsContainerRef = React.useRef(null);
 
 	React.useEffect(() => {
-		if (uploadOptionVisible) document.body.classList.add('xoxo');
+		if (showOptions) document.body.classList.add('xoxo');
 		return () => document.body.classList.remove('xoxo');
-	}, [uploadOptionVisible]);
+	}, [showOptions]);
 
 	React.useEffect(() => {
 		const handleOutsideClick = (e) => {
 			if (actionsContainerRef.current && !actionsContainerRef.current.contains(e.target)) {
-				setUploadOptionVisible(false);
+				setShowOptions(false);
 			}
 		};
 
@@ -58,39 +60,35 @@ function AccountOverview() {
 					<IconChevronLeft />
 				</button>
 				<p>Account Overview</p>
-				<button type="button" aria-label="show sidebar" onClick={() => setSidebarShown(true)}>
+				<button type="button" aria-label="show sidebar" onClick={() => setShowSidebar(true)}>
 					<IconSidebarRightExpand />
 				</button>
 			</header>
 			<main className={styles.b}>
 				<div className={styles.c}>
 					<div>
-						{fetchingDetails && !userDetails && <Spinner />}
-						{!fetchingDetails && userDetails && userDetails.photo && (
-							<img src={userDetails.photo} alt="" />
-						)}
-						{!fetchingDetails && userDetails && (
+						{loading && !user && <Spinner />}
+						{!loading && (!user || !user.photo) && <IconUser />}
+						{!loading && user && user.photo && <img src={user._id + '/' + user.photo} alt="" />}
+						{!loading && user && (
 							<button
 								type="button"
-								onClick={() => setUploadOptionVisible(true)}
+								onClick={() => setShowOptions(true)}
 								aria-label="set or change profile photo"
 							>
 								<IconCamera />
 							</button>
 						)}
-						{!fetchingDetails && (!userDetails || !userDetails.photo) && (
-							<IconUser className={styles.null} />
-						)}
 					</div>
 					<h2>rhyan@apple.id.com</h2>
 				</div>
-				{uploadOptionVisible && (
-					<Modal hideModal={() => setUploadOptionVisible(false)} ref={actionsContainerRef} />
-				)}
-				{sidebarShown && <Sidebar sidebarShown={sidebarShown} setSidebarShown={setSidebarShown} />}
+				{showOptions && <Modal hideModal={() => setShowOptions(false)} ref={actionsContainerRef} />}
+				{showSidebar && <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />}
 			</main>
 		</>
 	);
 }
 
-export default AccountOverview;
+const mapStateToProps = (state) => ({ user: state.jotjunction.user });
+
+export default connect(mapStateToProps)(AccountOverview);

@@ -1,9 +1,9 @@
-import './index.css';
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { Home, AccountOverview, NewNote, Register, SignIn } from './pages';
+import './index.css';
+import { AccountOverview, Home, NewNote, NoteView, Register, SignIn } from './pages';
 import { store } from './store';
 
 const root = createRoot(document.getElementById('root'));
@@ -13,6 +13,10 @@ const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <Home />,
+	},
+	{
+		path: '/:id',
+		element: <NoteView />,
 	},
 	{
 		path: '/new-note',

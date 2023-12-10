@@ -1,11 +1,11 @@
 {
 	"name": "@notelist/backend",
 	"version": "0.1.0",
-	"main": "src/main.js",
+	"main": "index.js",
 	"type": "module",
 	"scripts": {
-		"start": "NODE_ENV=production node src/main.js",
-		"dev": "NODE_ENV=development nodemon src/main.js",
+		"start": "NODE_ENV=production node index.js",
+		"dev": "NODE_ENV=development nodemon index.js",
 		"test": "NODE_ENV=test jest --verbose --runInBand --forceExit"
 	},
 	"dependencies": {
@@ -29,7 +29,7 @@
 	"jest": {
 		"testEnvironment": "jest-environment-node",
 		"testTimeout": 9999,
-		"globalTeardown": "./src/__tests__/teardown.js"
+		"globalTeardown": "__tests__/teardown.js"
 	},
 	"license": "ISC"
 }

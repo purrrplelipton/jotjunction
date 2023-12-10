@@ -1,18 +1,49 @@
-import { IconLayoutList, IconPlus, IconTags, rhyan } from '@src/assets';
+import { IconLayoutList, IconPlus, IconTags, IconUser } from '@src/assets';
+import { Spinner } from '@src/components';
+import { initializeDetails } from '@src/store/reducers';
 import React from 'react';
+import { connect, useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './styles.module.css';
 
-function NavBar() {
+function NavBar({ user }) {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const [loading, setLoading] = React.useState(false);
+
+	React.useEffect(() => {
+		const setDetails = async () => {
+			try {
+				setLoading(true);
+				await dispatch(initializeDetails());
+			} catch (error) {
+				console.log(error.message);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		setDetails();
+	}, []);
 
 	const navbarItems = [
-		{ child: <IconPlus />, fn: () => navigate('new-note'), label: 'create a new note' },
+		{ child: <IconPlus />, fn: () => navigate('/new-note'), label: 'create a new note' },
 		{ child: <IconTags />, fn: () => {}, label: 'go to my tags page' },
 		{
-			child: <img src={rhyan} alt="" />,
-			fn: () => navigate('account-overview'),
+			child:
+				loading && !user ? (
+					<Spinner />
+				) : !loading && user && user.photo ? (
+					<img src={user._id + '/' + user.photo} alt="my profile photo" />
+				) : (
+					<IconUser />
+				),
+			fn: () => {
+				if (user) return navigate('/account-overview');
+				const prompt = confirm('sign in to view account info');
+				if (prompt) return navigate('/sign-in');
+			},
 			label: 'got to my account overview page',
 		},
 	];
@@ -35,4 +66,6 @@ function NavBar() {
 	);
 }
 
-export default NavBar;
+const mapStateToProps = (state) => ({ user: state.jotjunction.user });
+
+export default connect(mapStateToProps)(NavBar);

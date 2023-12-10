@@ -13,8 +13,7 @@
 	--pastel-green: #abebc6;
 	--pastel-yellow: #f9e79f;
 	--pastel-purple: #d2b4de;
-	height: 100%;
-	min-height: 768px;
+	min-height: 100%;
 	line-height: 1.5;
 	font-family: Satoshi, sans-serif;
 	color: rgba(15, 23, 42, 1);

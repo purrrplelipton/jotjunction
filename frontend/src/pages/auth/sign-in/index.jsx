@@ -1,15 +1,12 @@
 import { Spinner } from '@src/components';
 import { signIn } from '@src/services';
-import { setUser } from '@src/store/reducers';
 import { IconEye, IconEyeOff } from '@src/assets';
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Alt from '../alt';
 import styles from './styles.module.css';
 
 function SignIn() {
-	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const [showPassword, setShowPassword] = React.useState(false);
@@ -25,8 +22,7 @@ function SignIn() {
 		};
 		try {
 			setSigningIn(true);
-			const { id } = await signIn(credentials);
-			dispatch(setUser(id));
+			await signIn(credentials);
 			navigate('/', { replace: true });
 		} catch (error) {
 			console.log(error.message);

@@ -1,4 +1,3 @@
-import { default as rhyan } from './rhyan.webp';
 import { ReactComponent as IconBrandApple } from './svgs/brand-apple.svg';
 import { ReactComponent as IconBrandFacebook } from './svgs/brand-facebook.svg';
 import { ReactComponent as IconBrandGoogle } from './svgs/brand-google.svg';
@@ -24,8 +23,8 @@ import { ReactComponent as IconX } from './svgs/x.svg';
 export {
 	IconBrandApple,
 	IconBrandFacebook,
-	IconCamera,
 	IconBrandGoogle,
+	IconCamera,
 	IconChevronLeft,
 	IconClock,
 	IconDotsVertical,
@@ -43,5 +42,4 @@ export {
 	IconTrash,
 	IconUser,
 	IconX,
-	rhyan,
 };

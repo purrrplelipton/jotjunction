@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { getDetails } from '@src/services';
 
 const jotJunction = createSlice({
 	name: 'jotJunction',
@@ -23,4 +24,16 @@ const jotJunction = createSlice({
 });
 
 export const { setUser, setNotes, appendNote, removeNote, setSearchQuery } = jotJunction.actions;
+
+export function initializeDetails() {
+	return async (dispatch) => {
+		try {
+			const { data } = await getDetails();
+			dispatch(setUser(data));
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
+}
+
 export default jotJunction.reducer;

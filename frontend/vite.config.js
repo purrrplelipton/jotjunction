@@ -17,9 +17,7 @@ export default defineConfig({
 			'/api': {
 				target: 'http://localhost:8080',
 				changeOrigin: true,
-				'^/.*': (path) => {
-					return path.replace(/^\/./, '/index.html');
-				},
+				// '^/.*': (path) => path.replace(/^\/./, '/index.html'),
 			},
 		},
 	},

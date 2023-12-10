@@ -1,7 +1,7 @@
 import { hash } from 'bcrypt';
 import { connect, connection, set } from 'mongoose';
 import { argv } from 'process';
-import { Note, User } from 'src/models/schemas';
+import { Note, User } from 'models/schemas';
 
 if (argv.length < 3) {
 	console.log('give password as an argument');

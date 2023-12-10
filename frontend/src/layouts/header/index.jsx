@@ -1,6 +1,6 @@
+import { IconSearch, IconX } from '@src/assets';
 import { findNote } from '@src/services';
 import { setSearchQuery } from '@src/store/reducers';
-import { IconSearch, IconX } from '@src/assets';
 import React from 'react';
 import { connect, useDispatch } from 'react-redux';
 import styles from './styles.module.css';

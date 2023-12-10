@@ -16,9 +16,9 @@ export function removeToken() {
 
 const usersApi = axios.create({ baseURL: '/api/users' });
 
-export async function updatePhoto(payload) {
+export async function updateDetails(payload) {
 	try {
-		const { data } = await usersApi.patch('/photo', payload, {
+		const { data } = await usersApi.patch('/', payload, {
 			headers: { Authorization: `Bearer ${getToken()}` },
 		});
 		return { data };
@@ -76,6 +76,15 @@ export async function fetchNotes() {
 export async function findNote(payload) {
 	try {
 		const { data } = await notesApi.get('/', { params: { payload } });
+		return { data };
+	} catch (error) {
+		throw error;
+	}
+}
+
+export async function getNote(payload) {
+	try {
+		const { data } = await notesApi.get(`/${payload}`);
 		return { data };
 	} catch (error) {
 		throw error;

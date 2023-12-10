@@ -5,4 +5,4 @@ dist
 yarn.lock
 package-lock.json
 pnpm-lock.yml
-photos
+profile-photos

@@ -4,24 +4,24 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.css';
 
-function Sidebar({ sidebarShown, setSidebarShown }) {
+function Sidebar({ showSidebar, setShowSidebar }) {
 	const navigate = useNavigate();
 	const sidebarRef = React.useRef(null);
 
 	React.useEffect(() => {
-		if (sidebarShown) document.body.classList.add('xoxo');
+		if (showSidebar) document.body.classList.add('xoxo');
 		return () => document.body.classList.remove('xoxo');
-	}, [sidebarShown]);
+	}, [showSidebar]);
 
 	React.useEffect(() => {
 		const handleOutsideClick = (e) => {
 			if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
-				setSidebarShown(false);
+				setShowSidebar(false);
 			}
 		};
 		const handleOutsideFocus = (e) => {
 			if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
-				setSidebarShown(false);
+				setShowSidebar(false);
 			}
 		};
 
@@ -39,7 +39,7 @@ function Sidebar({ sidebarShown, setSidebarShown }) {
 			<div>
 				<div className={styles.c}>
 					<header>
-						<button type="button" aria-label="hide sidebar" onClick={() => setSidebarShown(false)}>
+						<button type="button" aria-label="hide sidebar" onClick={() => setShowSidebar(false)}>
 							<IconSidebarRightCollapse />
 						</button>
 					</header>
